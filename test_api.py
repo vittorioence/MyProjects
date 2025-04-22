@@ -9,7 +9,7 @@ import traceback # Import traceback for detailed error info
 # Use environment variables or a .env file in real projects.
 load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-os.environ["OPENAI_BASE_URL"] = "https://api.yesapikey.com/v1"
+os.environ["OPENAI_BASE_URL"] =os.getenv("OPENAI_BASE_URL")
 # --- End of your setup code ---
 
 try:

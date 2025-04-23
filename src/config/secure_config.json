@@ -1,0 +1,14 @@
+{
+  "api_key": "sk-8jdI9AGg036bAQZOcSEKvCwQqzs2O5qG9mdng9VSYCO1sRKB",
+  "base_url": "https://api.openai.com/v1",
+  "model_name": "gpt-4-turbo-preview",
+  "temperature": 0.7,
+  "max_tokens": 4000,
+  "embedding_model": "text-embedding-3-small",
+  "parallel_requests": true,
+  "delay_between_requests": 1.0,
+  "timeout_seconds": 30,
+  "max_retries": 3,
+  "retry_delay": 1.0,
+  "query_rounds": 3
+}

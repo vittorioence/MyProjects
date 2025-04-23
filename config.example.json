@@ -1,0 +1,26 @@
+{
+    "model_tier": "economy",
+    "case_type": "autonomy",
+    "roles": [
+        "attending_physician",
+        "nurse_manager",
+        "ethicist",
+        "patient_advocate"
+    ],
+    "max_rounds": 3,
+    "max_concurrent": 3,
+    "require_confirmation": true,
+    "output_dir": "output/deliberations",
+    "case_study_path": "data/case_studies/autonomy/case1.txt",
+    "model": {
+        "name": "gpt-4.1-2025-04-14",
+        "temperature": 0.7,
+        "max_tokens": 4000
+    },
+    "performance": {
+        "track_token_usage": true,
+        "track_response_times": true,
+        "track_costs": true,
+        "cost_threshold": 1.0
+    }
+} 

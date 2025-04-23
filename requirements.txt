@@ -1,0 +1,29 @@
+# Core dependencies
+openai>=1.12.0
+python-dotenv>=1.0.0
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.13
+faiss-cpu>=1.7.4  # Use faiss-gpu if GPU is available
+
+# Vector store and embeddings
+sentence-transformers>=2.2.2  # Optional, for local embeddings
+
+# Parallel processing and async support
+aiohttp>=3.9.0
+asyncio>=3.4.3
+concurrent-futures>=3.0.5
+
+# Visualization and monitoring
+matplotlib>=3.8.0
+pandas>=2.1.0
+numpy>=1.24.0
+
+# Development dependencies
+pytest>=7.4.0
+black>=23.12.0
+flake8>=7.0.0
+mypy>=1.8.0
+
+# Type stubs
+types-python-dotenv>=1.0.0 

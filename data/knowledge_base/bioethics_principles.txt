@@ -1,0 +1,17 @@
+Autonomy, Beneficence, Non-maleficence, Justice.
+
+AUTONOMY: The principle of respect for persons, emphasizing the right of individuals to make informed decisions about their own medical care. This includes the right to consent to or refuse treatment, and to be fully informed about the risks, benefits, and alternatives.
+
+BENEFICENCE: The ethical obligation to act in the best interest of the patient, promoting their well-being and health. This principle requires healthcare providers to take positive actions to help patients and prevent harm.
+
+NON-MALEFICENCE: The principle of "do no harm," requiring healthcare providers to avoid causing harm to patients. This includes both physical and psychological harm, and requires careful consideration of the risks and benefits of any intervention.
+
+JUSTICE: The principle of fairness in the distribution of healthcare resources and the treatment of patients. This includes considerations of equality, equity, and the fair allocation of limited resources.
+
+INFORMED CONSENT: A process of communication between a patient and healthcare provider that results in the patient's authorization or agreement to undergo a specific medical intervention. This requires disclosure of information, comprehension by the patient, voluntariness of the decision, and authorization by the patient.
+
+CAPACITY: The ability to understand the nature and consequences of a decision and to make a choice based on that understanding. Decision-making capacity is specific to the decision at hand and may fluctuate over time.
+
+SUBSTITUTE DECISION-MAKING: The process by which another person makes healthcare decisions for a patient who lacks decision-making capacity. This may be based on previously expressed wishes, substituted judgment, or best interests.
+
+EMERGENCY EXCEPTION: A legal and ethical principle that allows healthcare providers to provide treatment without consent in emergency situations where the patient is unable to give consent and delay would result in serious harm or death.

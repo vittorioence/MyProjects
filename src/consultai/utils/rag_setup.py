@@ -8,9 +8,6 @@ from langchain_community.vectorstores import FAISS
 # Load environment variables (especially OPENAI_API_KEY)
 load_dotenv()
 
-os.environ["OPENAI_API_KEY"] = "sk-srx09f05a7469b93e02a70514592c789693091c73e6Etcf4"
-os.environ["OPENAI_BASE_URL"] = "https://api.gptsapi.net/v1"
-
 def setup_vector_store(data_directory="data"):
     """Loads docs, splits, embeds, and creates a FAISS vector store."""
     print("Setting up vector store...")
@@ -32,18 +29,11 @@ def setup_vector_store(data_directory="data"):
     documents = text_splitter.split_documents(all_docs)
     print(f"Split into {len(documents)} chunks.")
 
-    # Create embeddings
-    # Ensure OPENAI_API_KEY is set in your environment
-    # If using a proxy, you might need to configure embeddings differently
-    # depending on whether the proxy supports the embedding endpoint.
-    # Check your proxy documentation. If needed, pass base_url etc. here too.
-
+    # Create embeddings using environment variables
     embeddings = OpenAIEmbeddings(
-        # openai_api_key=os.getenv("OPENAI_API_KEY"),
-        # openai_api_base=os.getenv("OPENAI_BASE_URL"),
+        openai_api_key=os.getenv("OPENAI_API_KEY"),
+        openai_api_base=os.getenv("OPENAI_BASE_URL"),
         model="text-embedding-3-large"
-        # model="text-embedding-ada-002" # You can specify the model if needed, defaults often work
-        # chunk_size=... # Optional: adjust if needed and supported
     )
     print("Embeddings model loaded.")
 

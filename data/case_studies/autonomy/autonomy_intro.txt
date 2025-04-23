@@ -1,0 +1,27 @@
+Autonomy essentially means "self rule," and it is a patient's most basic right. As such, it is a health care worker's responsibility to respect the autonomy of her patients. However, at times this can be difficult because it can conflict with the paternalistic attitude of many health care professionals. The following two cases address patient autonomy. The first involves the rights of an individual to decide her own fate, even against her physicians' judgments. The second case involves the rights of a parent to care for her child in the manner that she sees fit.
+
+Patient autonomy is a fundamental principle in medical ethics that recognizes the right of patients to make informed decisions about their own medical care. This principle is grounded in the ethical concept of respect for persons and is protected by laws such as the Patient Self-Determination Act in the United States.
+
+Key aspects of patient autonomy include:
+
+1. INFORMED CONSENT: Patients have the right to be fully informed about their medical condition, proposed treatments, risks, benefits, and alternatives before making a decision.
+
+2. RIGHT TO REFUSE TREATMENT: Patients have the right to refuse any medical treatment, even if that refusal may result in harm or death, as long as they have decision-making capacity.
+
+3. DECISION-MAKING CAPACITY: The ability to understand the nature and consequences of a decision and to make a choice based on that understanding. Capacity is specific to the decision at hand and may fluctuate over time.
+
+4. ADVANCE DIRECTIVES: Documents that allow patients to specify their preferences for medical treatment in advance, in case they become unable to make decisions for themselves.
+
+5. SURROGATE DECISION-MAKING: When a patient lacks capacity, decisions may be made by a surrogate based on the patient's previously expressed wishes, substituted judgment, or best interests.
+
+Limitations to patient autonomy include:
+
+1. EMERGENCY EXCEPTIONS: In life-threatening emergencies where the patient cannot give consent and delay would result in serious harm or death, treatment may be provided without consent.
+
+2. PUBLIC HEALTH CONSIDERATIONS: In certain situations, such as infectious disease outbreaks, individual autonomy may be limited to protect public health.
+
+3. MENTAL HEALTH LAWS: In some jurisdictions, patients with severe mental illness may be treated against their will if they pose a danger to themselves or others.
+
+4. PARENTAL RIGHTS: For minors, parents typically have the right to make medical decisions on their behalf, though this may be limited in certain circumstances.
+
+The tension between patient autonomy and medical paternalism (the belief that healthcare providers know best) is a central challenge in medical ethics. While healthcare providers have an obligation to act in the patient's best interest (beneficence), they must also respect the patient's right to make decisions about their own care (autonomy).

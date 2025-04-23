@@ -1,0 +1,161 @@
+\documentclass[final]{beamer}
+\usepackage[scale=1.24]{beamerposter}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+% Define custom colors
+\definecolor{primarycolor}{RGB}{0, 82, 155}
+\definecolor{secondarycolor}{RGB}{70, 130, 180}
+\definecolor{accentcolor}{RGB}{255, 140, 0}
+
+% Custom styles
+\setbeamercolor{block title}{fg=white,bg=primarycolor}
+\setbeamercolor{block body}{fg=black,bg=white}
+\setbeamercolor{headline}{fg=white,bg=primarycolor}
+\setbeamercolor{footline}{fg=white,bg=primarycolor}
+
+% Poster title
+\title{\huge\textbf{ConsultAI: An Ethical Deliberation Framework for Medical Decision Making}}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+\begin{frame}[t]
+\begin{columns}[t]
+    \begin{column}{0.32\textwidth}
+        \begin{block}{Introduction}
+            ConsultAI is an innovative framework that leverages Large Language Models (LLMs) to facilitate ethical deliberation in complex medical scenarios. This state-of-the-art system implements a sophisticated multi-agent architecture that simulates diverse healthcare perspectives, enabling comprehensive ethical analyses for challenging medical cases.
+            
+            \vspace{0.5em}
+            \textbf{Key Components:}
+            \begin{itemize}
+                \item \textbf{Multi-Agent System:} Integrates perspectives from attending physicians, nurse managers, ethicists, and patient advocates
+                \item \textbf{Ethical Framework:} Built on core principles of medical ethics - autonomy, beneficence, justice, and resource allocation
+                \item \textbf{Advanced LLM Integration:} Utilizes GPT-4 Turbo for sophisticated reasoning and natural language understanding
+                \item \textbf{Structured Process:} Implements systematic deliberation protocols with defined rounds and consensus mechanisms
+            \end{itemize}
+            
+            \vspace{0.5em}
+            The system excels in analyzing complex medical ethics cases, providing evidence-based recommendations while maintaining transparency and accountability throughout the deliberation process.
+        \end{block}
+        
+        \begin{block}{Motivation}
+            \begin{itemize}
+                \item Growing complexity in medical ethical decisions
+                \item Need for systematic approach to ethical deliberation
+                \item Limited availability of ethics committees
+                \item Importance of considering multiple stakeholder perspectives
+                \item Demand for rapid but thorough ethical analysis
+            \end{itemize}
+        \end{block}
+        
+        \begin{block}{Multi-Agent Architecture}
+            \begin{itemize}
+                \item Role-specific agents (physician, nurse, ethicist, advocate)
+                \item Specialized knowledge and perspective per agent
+                \item GPT-4 Turbo for enhanced reasoning
+                \item Structured deliberation process
+            \end{itemize}
+        \end{block}
+    \end{column}
+    
+    \begin{column}{0.32\textwidth}
+        \begin{block}{Ethical Framework Integration}
+            \begin{itemize}
+                \item Comprehensive ethical principles coverage:
+                \begin{itemize}
+                    \item Autonomy
+                    \item Beneficence
+                    \item Justice
+                    \item Resource Allocation
+                \end{itemize}
+                \item Case-specific analysis templates
+                \item Systematic deliberation protocols
+            \end{itemize}
+        \end{block}
+        
+        \begin{block}{Technical Implementation}
+            \begin{itemize}
+                \item Python-based modular architecture
+                \item Configuration-driven setup
+                \item Automated deliberation pipeline
+                \item Structured output generation
+                \item FAISS-powered knowledge base
+            \end{itemize}
+        \end{block}
+        
+        \begin{block}{Results}
+            \textbf{System Capabilities}
+            \begin{itemize}
+                \item Successfully processes complex medical ethics cases across multiple domains:
+                \begin{itemize}
+                    \item Patient autonomy decisions
+                    \item Resource allocation challenges
+                    \item End-of-life care considerations
+                    \item Treatment plan conflicts
+                \end{itemize}
+                \item Demonstrates consistent deliberation patterns
+                \item Maintains ethical principle alignment
+            \end{itemize}
+            
+            \textbf{Process Achievements}
+            \begin{itemize}
+                \item Structured documentation of ethical reasoning
+                \item Multi-perspective analysis with role-specific insights
+                \item Real-time deliberation tracking
+                \item Transparent decision-making process
+            \end{itemize}
+            
+            \textbf{Case Study Highlights}
+            \begin{itemize}
+                \item Successful resolution of autonomy cases
+                \item Balanced stakeholder perspective integration
+                \item Clear recommendation documentation
+                \item Traceable reasoning patterns
+            \end{itemize}
+        \end{block}
+    \end{column}
+    
+    \begin{column}{0.32\textwidth}
+        \begin{block}{Impact and Applications}
+            \textbf{Clinical Settings}
+            \begin{itemize}
+                \item Ethics committee support
+                \item Rapid case analysis
+                \item Professional training tool
+                \item Ethical reasoning documentation
+            \end{itemize}
+            
+            \textbf{Educational Use}
+            \begin{itemize}
+                \item Medical ethics training
+                \item Case study analysis
+                \item Decision-making frameworks
+                \item Professional development
+            \end{itemize}
+        \end{block}
+        
+        \begin{block}{Future Directions}
+            \begin{itemize}
+                \item Additional specialist roles
+                \item Enhanced real-time capabilities
+                \item Expanded case database
+                \item Advanced consensus algorithms
+                \item Hospital system integration
+            \end{itemize}
+        \end{block}
+        
+        \begin{block}{Contact Information}
+            \begin{itemize}
+                \item Project: \url{github.com/yourusername/ConsultAI}
+                \item Email: your.email@institution.edu
+            \end{itemize}
+        \end{block}
+    \end{column}
+\end{columns}
+\end{frame}
+\end{document} 

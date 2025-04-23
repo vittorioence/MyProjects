@@ -1,0 +1,11 @@
+A hospital is facing a severe shortage of ventilators during a respiratory virus pandemic. There are five patients in critical condition who require ventilator support to survive, but only three ventilators are available. The patients are:
+
+1. A 75-year-old man with multiple chronic conditions including heart disease and diabetes, who has a 30% chance of survival even with ventilator support.
+2. A 45-year-old woman with no underlying health conditions, who has an 80% chance of survival with ventilator support.
+3. A 28-year-old man who is the sole caregiver for his two young children, with a 60% chance of survival with ventilator support.
+4. A 62-year-old woman who is a retired healthcare worker with 40 years of experience, who has a 40% chance of survival with ventilator support.
+5. A 19-year-old college student with asthma, who has a 70% chance of survival with ventilator support.
+
+The hospital's ethics committee must decide which three patients should receive the available ventilators. The decision must be made quickly as all patients are deteriorating rapidly. The committee has established guidelines that consider medical utility (likelihood of survival), social utility (contribution to society), and justice (fairness in distribution).
+
+This case raises complex ethical questions about resource allocation, the value of different lives, and the criteria that should be used to make such difficult decisions. It also highlights the tension between utilitarian approaches (maximizing overall benefit) and deontological approaches (treating each person as an end in themselves).

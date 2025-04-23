@@ -1,0 +1,13 @@
+A regional hospital is facing a severe shortage of intensive care unit (ICU) beds during a respiratory virus pandemic. There are seven patients in critical condition who require ICU care to survive, but only four ICU beds are available. The patients are:
+
+1. A 78-year-old man with multiple chronic conditions including heart disease, diabetes, and kidney failure, who has a 20% chance of survival even with ICU care.
+2. A 42-year-old woman with no underlying health conditions, who has an 85% chance of survival with ICU care.
+3. A 35-year-old man who is the sole caregiver for his three young children (ages 2, 5, and 7), with a 65% chance of survival with ICU care.
+4. A 58-year-old woman who is a retired healthcare worker with 35 years of experience, who has a 45% chance of survival with ICU care.
+5. A 22-year-old college student with asthma, who has a 75% chance of survival with ICU care.
+6. A 65-year-old man who is a prominent community leader and philanthropist, who has a 30% chance of survival with ICU care.
+7. A 19-year-old woman who is pregnant (28 weeks gestation) with no underlying health conditions, who has a 70% chance of survival with ICU care, but whose baby has a 90% chance of survival if she receives ICU care.
+
+The hospital's ethics committee must decide which four patients should receive the available ICU beds. The decision must be made quickly as all patients are deteriorating rapidly. The committee has established guidelines that consider medical utility (likelihood of survival), social utility (contribution to society), and justice (fairness in distribution).
+
+This case raises complex ethical questions about resource allocation, the value of different lives, and the criteria that should be used to make such difficult decisions. It also highlights the tension between utilitarian approaches (maximizing overall benefit) and deontological approaches (treating each person as an end in themselves). 

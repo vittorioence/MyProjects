@@ -1,0 +1,24 @@
+{
+  "overall_score": 0.79,
+  "component_scores": {
+    "ethical_principle_coverage": 0.85,
+    "reasoning_quality": 0.76,
+    "evidence_usage": 0.82,
+    "stakeholder_consideration": 0.73,
+    "practical_applicability": 0.78
+  },
+  "score_distribution": [0.56, 0.62, 0.67, 0.71, 0.73, 0.75, 0.78, 0.79, 0.82, 0.85, 0.87, 0.91],
+  "expected_principles": ["autonomy", "beneficence", "non-maleficence", "justice"],
+  "expected_stakeholders": ["patient", "family", "medical team", "hospital"],
+  "exemplar_recommendations": [
+    "The medical team should prioritize the patient's autonomous decision to discontinue treatment, as the patient currently has decision-making capacity. This respects the ethical principle of autonomy, which is particularly important given the patient's terminal condition and documented advance directives.",
+    "While respecting the patient's decision, the medical team should provide compassionate support to the family, including a family meeting with palliative care specialists to help them understand the patient's prognosis and the rationale for focusing on comfort care.",
+    "A clear transition plan to palliative care should be established, with specific attention to pain management and maintaining the patient's dignity and quality of life during their remaining time."
+  ],
+  "expected_components": {
+    "patient_autonomy_recognition": "The deliberation should explicitly recognize the patient's right to make their own healthcare decisions while they have capacity.",
+    "family_support_approaches": "The deliberation should address ways to support the family emotionally while honoring the patient's wishes.",
+    "ethical_framework_application": "The deliberation should clearly apply relevant ethical principles, particularly autonomy, to justify the recommended approach.",
+    "practical_implementation": "The deliberation should include practical steps for implementing the transition to palliative care."
+  }
+} 

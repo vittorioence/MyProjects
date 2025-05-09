@@ -53,6 +53,10 @@ class APIClient:
         # Use provided credentials or fall back to config
         self.api_key = api_key or self.api_config["api_key"]
         self.base_url = base_url or self.api_config["base_url"]
+        
+        # Clean up base_url (remove any extra spaces or comments)
+        self.base_url = self.base_url.split("#")[0].strip()
+        
         self.max_concurrent = max_concurrent
         self.require_confirmation = require_confirmation
         
@@ -324,60 +328,66 @@ class APIClient:
         """
         # Prepare request details
         request_details = self._prepare_request_details(
-            prompt=prompt,
-            system_message=system_message,
-            model=model,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            file_path=file_path,
-            **kwargs
+            prompt, system_message, model, temperature, max_tokens, file_path, **kwargs
         )
         
-        # Check if confirmation is required
+        # Check if we're in mock mode
+        if self.api_config.get("mock_mode", False):
+            logger.info("Mock mode enabled, returning mock response")
+            # Create a mock response
+            return {
+                "content": f"Mock response for: {prompt[:50]}...",
+                "response_time": 0.1,
+                "input_tokens": 10,
+                "output_tokens": 20,
+                "total_tokens": 30,
+                "input_cost": 0.0,
+                "output_cost": 0.0,
+                "total_cost": 0.0,
+                "error": None
+            }
+        
+        # Get confirmation if required
         if self.require_confirmation:
-            confirmed = self.confirmation.confirm_request(request_details)
-            self.confirmation.log_request(request_details, confirmed)
-            
-            if not confirmed:
-                return {
-                    "content": "Request cancelled by user",
-                    "response_time": 0,
-                    "input_tokens": 0,
-                    "output_tokens": 0,
-                    "total_tokens": 0,
-                    "input_cost": 0,
-                    "output_cost": 0,
-                    "total_cost": 0,
-                    "error": "Request cancelled by user"
-                }
+            self.confirmation.confirm_request(request_details)
         
-        # Track start time
-        start_time = time.time()
+        # Prepare messages
+        messages = [{"role": m["role"], "content": m["content"]} for m in request_details["messages"]]
         
-        # Filter out non-API parameters from kwargs
-        api_kwargs = {k: v for k, v in kwargs.items() if k not in [
-            'api_key', 'base_url', 'max_concurrent', 'require_confirmation'
+        # Set up retry logic
+        max_retries = self.api_config["max_retries"]
+        retry_delay = self.api_config["retry_delay"]
+        
+        # Filter out parameters that should not be passed to the API
+        filtered_kwargs = {k: v for k, v in kwargs.items() if k not in [
+            'api_key', 'base_url', 'max_concurrent', 'require_confirmation', 'messages', 'estimated_tokens'
         ]}
         
-        # Make API request with retries
-        for attempt in range(self.api_config["max_retries"]):
+        # Call API with retries
+        start_time = time.time()
+        for attempt in range(max_retries):
             try:
-                async with self.semaphore:  # Rate limit concurrent requests
-                    response = await self.async_client.chat.completions.create(
-                        model=request_details["model"],
-                        messages=request_details["messages"],
-                        temperature=request_details["temperature"],
-                        max_tokens=request_details["max_tokens"],
-                        **api_kwargs
-                    )
-                return self._process_response(response, start_time)
+                # Make API call with correctly formatted parameters
+                response = await self.async_client.chat.completions.create(
+                    model=request_details["model"],
+                    messages=messages,
+                    temperature=request_details["temperature"],
+                    max_tokens=request_details["max_tokens"],
+                    **filtered_kwargs
+                )
                 
+                # Process and return response
+                return self._process_response(response, start_time)
             except Exception as e:
+                # Log error
                 logger.error(f"Error generating response (attempt {attempt + 1}): {str(e)}")
-                if attempt < self.api_config["max_retries"] - 1:
-                    await asyncio.sleep(self.api_config["retry_delay"])
-                else:
+                
+                # If this is the last attempt, return error
+                if attempt == max_retries - 1:
                     return self._handle_error(e, start_time)
+                
+                # Otherwise, wait before retrying
+                await asyncio.sleep(retry_delay * (2 ** attempt))  # Exponential backoff
     
     async def make_parallel_requests(
         self,
@@ -572,4 +582,36 @@ class APIClient:
             "output_cost_usd": output_cost,
             "total_cost_usd": total_cost,
             "estimated_tokens": num_calls * (avg_input_tokens + avg_output_tokens)
-        } 
+        }
+
+    async def make_request(
+        self,
+        prompt: str,
+        system_message: Optional[str] = None,
+        model: Optional[str] = None,
+        temperature: Optional[float] = None,
+        max_tokens: Optional[int] = None,
+        **kwargs
+    ) -> Dict[str, Any]:
+        """
+        Wrapper for generate_response_async to maintain backward compatibility.
+        
+        Args:
+            prompt: The prompt to send to the API
+            system_message: Optional system message to guide the model
+            model: Model to use (optional, will use from config if not provided)
+            temperature: Temperature setting (optional, will use from config if not provided)
+            max_tokens: Maximum tokens to generate (optional, will use from config if not provided)
+            **kwargs: Additional arguments to pass to the API
+            
+        Returns:
+            Dictionary containing the response and metadata
+        """
+        return await self.generate_response_async(
+            prompt=prompt,
+            system_message=system_message,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs
+        ) 

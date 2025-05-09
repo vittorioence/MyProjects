@@ -4,8 +4,10 @@ This is the single source of truth for all configuration settings.
 """
 
 import os
+import json
 from pathlib import Path
 from dotenv import load_dotenv
+from typing import Dict, Any, Optional
 
 # Load environment variables
 load_dotenv()
@@ -15,11 +17,44 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 CASE_STUDIES_DIR = DATA_DIR / "case_studies"
 
+# Default configuration
+DEFAULT_CONFIG = {
+    "api_key": "sk-VIrMMAcTb9YwDr530rgD7L6UIaevbxDY0peQEo4OOcr6bAh4",
+    "base_url": "https://api.openai-proxy.org/v1",
+    "mock_mode": False,  # 关闭模拟模式，使用真实API
+    "max_tokens": 2000,  # Add default max_tokens
+    "roles": {
+        "attending_physician": {
+            "name": "Attending Physician",
+            "description": "Senior medical professional responsible for patient care",
+            "system_message": "You are an attending physician with expertise in patient care.",
+            "memory_size": 5
+        },
+        "patient_advocate": {
+            "name": "Patient Advocate",
+            "description": "Representative who champions patient rights and autonomy",
+            "system_message": "You are a patient advocate who ensures patient voices are heard.",
+            "memory_size": 5
+        },
+        "clinical_ethicist": {
+            "name": "Clinical Ethicist",
+            "description": "Specialist in healthcare ethics and ethical reasoning",
+            "system_message": "You are a clinical ethicist who analyzes ethical dimensions of healthcare decisions.",
+            "memory_size": 5
+        }
+    },
+    "deliberation": {
+        "max_rounds": 3,
+        "consensus_threshold": 0.8,
+        "response_format": "structured"
+    }
+}
+
 # API Configuration
 API_CONFIG = {
     "api_key": os.getenv("OPENAI_API_KEY"),
     "base_url": os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
-    "model_name": "gpt-4.1-2025-04-14",
+    "model_name": "gpt-4.1-nano",
     "temperature": 0.7,
     "max_tokens": 4000,
     "embedding_model": "text-embedding-3-small",
@@ -44,6 +79,14 @@ TOKEN_CONFIG = {
     "gpt-4.1-2025-04-14": {
         "input_token_cost": 0.003,
         "output_token_cost": 0.012
+    },
+    "gpt-4.1-nano": {
+        "input_token_cost": 0.0015,
+        "output_token_cost": 0.002
+    },
+    "gpt-4.1-mini": {
+        "input_token_cost": 0.0015,
+        "output_token_cost": 0.002
     },
     "gpt-3.5-turbo": {
         "input_token_cost": 0.0015,
@@ -168,9 +211,31 @@ CASE_STUDIES = {
     }
 }
 
-def get_api_config():
-    """Get API configuration settings."""
-    return API_CONFIG
+def get_api_config() -> Dict[str, str]:
+    """
+    Get API configuration from environment variables or default config.
+    
+    Returns:
+        Dictionary containing API configuration
+    """
+    # Create a copy of the API_CONFIG to avoid modifying the original
+    config = API_CONFIG.copy()
+    
+    # Get the base_url from environment or default
+    base_url = os.environ.get("OPENAI_BASE_URL", DEFAULT_CONFIG["base_url"])
+    
+    # Clean up the base_url by removing any comments or extra spaces
+    if base_url and "#" in base_url:
+        base_url = base_url.split("#")[0].strip()
+    
+    # Override with environment variables if they exist
+    config.update({
+        "api_key": os.environ.get("OPENAI_API_KEY", DEFAULT_CONFIG["api_key"]),
+        "base_url": base_url,
+        "mock_mode": os.environ.get("MOCK_MODE", DEFAULT_CONFIG["mock_mode"]),
+    })
+    
+    return config
 
 def get_token_config():
     """Get token usage configuration."""
@@ -188,13 +253,28 @@ def get_rag_config():
     """Get RAG configuration settings."""
     return RAG_CONFIG
 
-def get_deliberation_config():
-    """Get deliberation configuration settings."""
-    return DELIBERATION_CONFIG
+def get_deliberation_config() -> Dict[str, Any]:
+    """
+    Get deliberation configuration.
+    
+    Returns:
+        Dictionary containing deliberation configuration
+    """
+    return {
+        "roles": DEFAULT_CONFIG["roles"],
+        "max_rounds": DEFAULT_CONFIG["deliberation"]["max_rounds"],
+        "consensus_threshold": DEFAULT_CONFIG["deliberation"]["consensus_threshold"],
+        "response_format": DEFAULT_CONFIG["deliberation"]["response_format"]
+    }
 
-def get_agents_config():
-    """Get agent configuration settings."""
-    return AGENTS_CONFIG
+def get_agents_config() -> Dict[str, Any]:
+    """
+    Get agent configuration.
+    
+    Returns:
+        Dictionary containing agent configuration
+    """
+    return DEFAULT_CONFIG["roles"]
 
 def get_evaluation_config():
     """Get evaluation configuration settings."""

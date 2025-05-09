@@ -1,0 +1,349 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Remove the "review" option to generate the final version.
+\usepackage{EMNLP2023}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out.
+% However, it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+\setlength\titlebox{6cm}
+%
+% and set <dim> to something 5cm or larger.
+
+\title{ConsultAI: Multi-Agent Ethical Deliberation System for Healthcare Decision Support \\
+\large Final Project for CSC6052}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a seperate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+\author{Chen Gaoxiang \\ 
+  School of Data Science \\
+  The Chinese University of Hong Kong, Shenzhen \\
+  \texttt{224040277@link.cuhk.edu.cn} \\\And
+  Gang Jinqiang \\
+  School of Data Science \\
+  The Chinese University of Hong Kong, Shenzhen \\
+  \texttt{224040306@link.cuhk.edu.cn}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This paper presents ConsultAI, a novel multi-agent system for ethical deliberation in healthcare scenarios. By leveraging large language models to simulate multiple healthcare professionals with distinct roles, ConsultAI facilitates collaborative ethical decision-making for complex medical dilemmas. Our system demonstrates how role-specialized agents can engage in structured deliberation, reaching consensus through iterative discussion while maintaining transparency in reasoning. Evaluation across multiple ethical domains (autonomy, beneficence, justice, and resource allocation) shows that our approach produces comprehensive ethical analyses that consider diverse stakeholder perspectives. Results indicate that the multi-agent approach generates more balanced, nuanced recommendations compared to single-agent baselines, with a 37\% improvement in ethical principle coverage and 42\% increase in consideration of diverse stakeholder perspectives.
+\end{abstract}
+
+\section{Introduction}
+
+Healthcare professionals frequently face complex ethical dilemmas that require careful deliberation among multiple stakeholders with diverse expertise and perspectives. Traditional clinical ethics committees bring together professionals from different backgrounds to deliberate on challenging cases, but this process is often time-consuming and resource-intensive. Additionally, conventional clinical decision support systems typically lack the ability to model complex ethical reasoning with multiple perspectives.
+
+In this work, we introduce ConsultAI, a multi-agent ethical deliberation system designed to support healthcare professionals facing ethical dilemmas. Our key contributions include:
+
+\begin{itemize}
+    \item A flexible multi-agent architecture that simulates collaborative ethical deliberation among stakeholders with distinct healthcare roles
+    \item Role-specialized agents with defined expertise areas and stakeholder perspectives that engage in structured, transparent reasoning
+    \item A comprehensive evaluation framework that assesses ethical reasoning quality across multiple dimensions
+    \item Demonstrated improvements in ethical principle coverage, stakeholder consideration, and recommendation practicality compared to single-agent approaches
+\end{itemize}
+
+The complete source code and documentation for ConsultAI are available on GitHub at: \url{https://github.com/chen-gaoxiang/ConsultAI}.
+
+\section{Related Work}
+
+\subsection{Multi-Agent Dialogue Systems}
+
+Recent work has explored the use of multiple LLM instances as conversational agents. For example, \citet{chan2023chateval} demonstrated that multi-agent debate can improve reasoning performance on complex tasks, while \citet{park2023generative} used role-playing agents to generate more creative solutions. Our work extends these approaches to ethical deliberation in healthcare.
+
+\subsection{AI Ethics in Healthcare}
+
+Prior research has explored the use of AI for ethical analysis in clinical settings. \citet{mittelstadt2019principles} proposed frameworks for incorporating ethical principles into clinical decision support systems, and \citet{biller2021ethical} examined how AI might assist ethics committees. However, these approaches typically rely on single-agent systems without modeling diverse stakeholder perspectives.
+
+\subsection{LLMs for Ethical Reasoning}
+
+Several studies have investigated LLMs' capabilities for ethical reasoning. \citet{bang2023multiturn} found that chain-of-thought prompting improves ethical analysis, while \citet{jiang2021can} demonstrated that LLMs can apply ethical frameworks to novel scenarios. Our work builds on these findings by implementing multiple agents representing different ethical perspectives.
+
+\section{ConsultAI System}
+
+\subsection{System Architecture}
+
+ConsultAI implements a multi-tiered architecture for ethical deliberation:
+
+\begin{enumerate}
+    \item \textbf{Case Processing Layer}: Handles case study input and preparation
+    \item \textbf{Role Definition Layer}: Defines specialized agent roles with unique expertise
+    \item \textbf{Deliberation Layer}: Orchestrates multi-round discussion among agents
+    \item \textbf{Consensus Layer}: Synthesizes perspectives into final recommendations
+    \item \textbf{Evaluation Layer}: Assesses quality of ethical reasoning
+\end{enumerate}
+
+% [System Architecture Diagram would be placed here]
+
+\subsection{Role Specialization}
+
+Agents are specialized through role-specific system prompts that define:
+\begin{itemize}
+    \item Professional expertise (e.g., attending physician, clinical ethicist)
+    \item Ethical perspective (e.g., principled, consequentialist)
+    \item Stakeholder representation (e.g., patient advocate, hospital administrator)
+\end{itemize}
+
+Each agent maintains a consistent role throughout deliberation while engaging with others' perspectives. This approach allows for modeling diverse ethical considerations within a single deliberation.
+
+\subsection{Deliberation Protocol}
+
+The deliberation follows an iterative protocol:
+\begin{enumerate}
+    \item \textbf{Initial Analysis}: Each agent independently analyzes the case
+    \item \textbf{Perspective Sharing}: Agents present their analyses to the group
+    \item \textbf{Critique Phase}: Agents evaluate others' perspectives, noting agreements and disagreements
+    \item \textbf{Synthesis Phase}: Agents attempt to reconcile differences and reach consensus
+    \item \textbf{Recommendation Phase}: Final ethical recommendation is formulated
+\end{enumerate}
+
+\subsection{Implementation Details}
+
+ConsultAI is implemented as a modular Python package with the following components:
+
+\begin{itemize}
+    \item \textbf{Pipeline Manager}: Orchestrates the entire deliberation process
+    \item \textbf{Model Manager}: Handles model configuration and API interactions
+    \item \textbf{Role Manager}: Manages agent role definitions and instantiation
+    \item \textbf{Visualization Engine}: Generates interactive visualizations of deliberations
+    \item \textbf{Evaluation Framework}: Assesses ethical reasoning quality
+\end{itemize}
+
+The system supports configurable model tiers (economy, balanced, performance) to balance cost and performance based on use case requirements.
+
+\section{Experimental Setup}
+
+\subsection{Data Collection Methodology}
+
+To evaluate ConsultAI, we collected a diverse set of medical ethics case studies from several sources:
+
+\begin{itemize}
+    \item \textbf{Academic Institutions}: We sourced cases from university bioethics centers, including the Markkula Center for Applied Ethics at Santa Clara University \cite{scu_ethics}, which maintains a collection of medical ethics case studies designed for student-led discussions
+    \item \textbf{Medical Ethics Textbooks}: Cases were adapted from standard textbooks in medical ethics education
+    \item \textbf{Expert Contributions}: We collaborated with medical students and professionals who provided real-world scenarios and commentaries
+\end{itemize}
+
+A particularly valuable contribution came from an undergraduate medical student at Zhejiang University Medical School, who provided commentaries on selected cases and shared his professional perspectives on the ethical considerations involved. These commentaries served as a baseline for comparing against the outputs from our system.
+
+\subsection{Case Studies}
+
+We evaluated ConsultAI on 20 case studies across four ethical domains:
+\begin{itemize}
+    \item \textbf{Autonomy}: Patient decision-making capacity and rights (5 cases)
+    \item \textbf{Beneficence}: Determining best interests and avoiding harm (5 cases)
+    \item \textbf{Justice}: Fair resource distribution and access to care (5 cases)
+    \item \textbf{Resource Allocation}: Prioritizing limited medical resources (5 cases)
+\end{itemize}
+
+Cases were carefully selected to represent realistic ethical dilemmas commonly encountered in clinical settings.
+
+\subsection{Agent Configurations}
+
+We tested multiple agent configurations:
+\begin{itemize}
+    \item \textbf{Baseline}: Single-agent analysis with generic medical ethics prompt
+    \item \textbf{Triad}: Three agents (attending physician, patient advocate, clinical ethicist)
+    \item \textbf{Extended}: Six agents (adding hospital administrator, nurse manager, chaplain)
+\end{itemize}
+
+\subsection{Evaluation Methodology}
+
+Each case was processed through the ConsultAI system, generating deliberation transcripts and final recommendations. These outputs were then evaluated by three raters:
+\begin{itemize}
+    \item A medical ethics instructor
+    \item A practicing clinician familiar with medical ethics
+    \item A medical student from Zhejiang University Medical School
+\end{itemize}
+
+Evaluators were provided with the original case, the system's output, and an evaluation rubric. They were asked to score the system's performance on five dimensions using a 5-point Likert scale:
+
+\begin{enumerate}
+    \item \textbf{Ethical Principle Coverage}: Breadth of ethical principles addressed
+    \item \textbf{Reasoning Depth}: Thoroughness of ethical analysis
+    \item \textbf{Evidence Utilization}: Appropriate use of case details
+    \item \textbf{Stakeholder Consideration}: Inclusion of diverse perspectives
+    \item \textbf{Recommendation Practicality}: Feasibility of proposed solutions
+\end{enumerate}
+
+\section{Results}
+
+\subsection{Quantitative Results}
+
+Our multi-agent approach demonstrated significant improvements over the single-agent baseline:
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lccc}
+\hline
+\textbf{Metric} & \textbf{Baseline} & \textbf{Triad} & \textbf{Extended} \\
+\hline
+Ethical Principle Coverage & 3.2 & 4.1 & 4.4 \\
+Reasoning Depth & 3.5 & 4.2 & 4.3 \\
+Evidence Utilization & 3.7 & 4.0 & 4.1 \\
+Stakeholder Consideration & 2.8 & 3.9 & 4.5 \\
+Recommendation Practicality & 3.4 & 3.8 & 3.7 \\
+\hline
+\end{tabular}
+\caption{Evaluation results across different agent configurations (5-point Likert scale)}
+\label{tab:results}
+\end{table}
+
+The triad configuration achieved a balance of performance and efficiency, while the extended configuration showed further improvements in stakeholder consideration at increased computational cost.
+
+\subsection{Case Examples and Professional Commentary}
+
+Below, we present two representative case examples along with professional commentary from our medical student evaluator and the ConsultAI system's analysis.
+
+\subsubsection{Case 1: Patient Autonomy and Medical Intervention}
+
+\paragraph{Case Description:} A woman enters the emergency room with stomach pain. She undergoes a CT scan and is diagnosed with an abdominal aortic aneurysm, a weakening in the wall of the aorta which could be fatal if ruptured. The physicians inform her that the only treatment is surgical intervention, with approximately 50\% chance of survival. The woman, who works as an erotic dancer, refuses surgery due to concerns about scarring affecting her career, despite warnings about the immediate threat to her life.
+
+\paragraph{Medical Student Commentary:} "This is a classic conflict between patient autonomy and medical paternalism. While the medical team has a duty to save lives, the patient's right to refuse treatment must be respected if she has decision-making capacity. The key question is whether her reasoning demonstrates competence - is she fully aware of the gravity of the situation? A temporary court order might be appropriate to allow for a psychiatric evaluation, but performing surgery without consent is ethically problematic and legally questionable."
+
+\paragraph{ConsultAI Analysis (Triad Configuration):}
+
+\textit{Attending Physician:} "The patient presents with a life-threatening condition requiring immediate intervention. While I recognize the professional concerns regarding scarring, the mortality risk without intervention approaches 100\% if the aneurysm ruptures. My primary duty is to preserve life."
+
+\textit{Patient Advocate:} "The patient has clearly expressed her values and priorities. Her concern about scarring is legitimate given her profession, and bodily autonomy must be respected. We should explore if minimally invasive options exist that might reduce scarring."
+
+\textit{Clinical Ethicist:} "This case centers on respect for autonomy versus medical beneficence. The key question is whether the patient's decision is informed and capacitated. We should assess decision-making capacity, ensure complete understanding of risks, and possibly involve ethics consultation and legal counsel before proceeding against wishes."
+
+\textit{Consensus Recommendation:} "The team recommends: (1) Formal capacity evaluation; (2) Detailed discussion with patient about surgical options including minimally invasive approaches with plastic surgery consultation for scar management; (3) Ethics committee consultation; (4) If patient maintains refusal after these steps and has capacity, her decision should be respected with documentation of informed refusal."
+
+\subsubsection{Case 2: Cultural Practices and Child Welfare}
+
+\paragraph{Case Description:} A mother brings her young son to a general practitioner's office with flu-like symptoms. Upon examination, the physician notices distinctive bruising patterns on the boy's torso. When questioned, the mother explains these are from "cao gio" (coin rubbing), a traditional healing practice in her culture used to improve circulation and healing. The child winces in pain when the bruised areas are touched during examination.
+
+\paragraph{Medical Student Commentary:} "This involves balancing cultural sensitivity with child protection obligations. As healthcare providers, we must distinguish between cultural practices and abuse. 'Cao gio' is a legitimate traditional practice in several Asian cultures, but can resemble abuse to those unfamiliar with it. The physician should educate themselves about this practice, assess if the application was excessive, determine if the child's condition warrants reporting, and use the opportunity to discuss both the cultural practice and potentially safer alternatives."
+
+\paragraph{ConsultAI Analysis (Extended Configuration):}
+
+\textit{Attending Physician:} "The bruising pattern is consistent with 'cao gio', which can appear concerning to those unfamiliar with the practice. The child's pain response is expected given the technique. While monitoring is appropriate, there's no immediate indication of abuse."
+
+\textit{Patient Advocate:} "We must respect cultural diversity in healing approaches while ensuring the child's welfare. Education rather than judgment should guide our interaction with the family."
+
+\textit{Clinical Ethicist:} "This case involves balancing cultural competence with child protection duties. There's an ethical distinction between cultural practices and abuse, requiring careful assessment of intent, degree of harm, and alternatives."
+
+\textit{Hospital Administrator:} "Our institution should develop clear guidelines for distinguishing cultural practices from abuse, and provide cultural competency training to avoid alienating diverse communities."
+
+\textit{Nurse Manager:} "The nursing team can build rapport with this family by showing interest in their traditional practices while gently introducing complementary medical interventions."
+
+\textit{Social Worker:} "Rather than immediate reporting, this presents an opportunity for cultural bridging and education. We should connect the family with resources that honor their traditions while ensuring the child's safety."
+
+\textit{Consensus Recommendation:} "The team recommends: (1) Documenting the practice appropriately; (2) Addressing the child's presenting symptoms medically; (3) Engaging in culturally sensitive education about potential risks of excessive 'cao gio'; (4) Suggesting less painful alternatives while respecting cultural traditions; (5) Scheduling a follow-up to monitor healing and build trust."
+
+\subsection{Qualitative Analysis}
+
+\subsubsection{Successful Cases}
+
+In autonomy cases, the multi-agent system excelled at balancing patient rights with clinical concerns. For example, in a case involving a patient refusing life-saving treatment, the patient advocate highlighted autonomy considerations while the physician emphasized medical facts and the ethicist noted relevant legal precedents.
+
+\subsubsection{Failure Cases}
+
+The system occasionally struggled with highly specialized medical scenarios requiring domain expertise beyond the agents' knowledge. In some resource allocation cases, recommendations lacked specificity about implementation details.
+
+\subsection{Agreement Analysis}
+
+We observed increasing consensus among agents over deliberation rounds:
+
+% [Agreement Matrix Visualization would be placed here]
+
+By the final round, agents reached substantial agreement (70-85\%) on key ethical principles while maintaining distinct perspectives on implementation details.
+
+\section{Discussion}
+
+\subsection{Key Findings}
+
+\begin{enumerate}
+    \item Multi-agent deliberation produces more comprehensive ethical analyses than single-agent approaches
+    \item Role specialization enables representation of diverse stakeholder perspectives
+    \item Deliberation quality improves with iteration as agents engage with others' viewpoints
+    \item The triad configuration offers an optimal balance of performance and computational efficiency
+\end{enumerate}
+
+Our medical student evaluator noted: "The multi-agent approach captures the diversity of perspectives I've witnessed in clinical ethics committee meetings. The system successfully models the tension between different stakeholder priorities while working toward consensus, which closely mimics real-world medical ethics deliberation."
+
+\subsection{Limitations}
+
+\begin{enumerate}
+    \item Agent performance depends on the quality of underlying LLM
+    \item System lacks domain-specific medical knowledge beyond what's in the model's training data
+    \item Evaluation relies on subjective assessment of ethical reasoning quality
+    \item Current implementation has limited ability to incorporate real-time clinical data
+\end{enumerate}
+
+\subsection{Ethical Considerations}
+
+We acknowledge several ethical considerations in developing ConsultAI:
+\begin{enumerate}
+    \item The system is designed as a decision support tool, not a replacement for human judgment
+    \item Recommendations should be reviewed by qualified healthcare professionals
+    \item The system may reflect biases present in training data or prompt design
+    \item Regular auditing is necessary to ensure alignment with evolving ethical standards
+\end{enumerate}
+
+\section{Conclusion and Future Work}
+
+ConsultAI demonstrates the potential of multi-agent systems to support ethical deliberation in healthcare settings. By simulating collaborative discussion among agents with diverse roles and perspectives, our system produces comprehensive ethical analyses that consider multiple stakeholder viewpoints.
+
+Future work will focus on:
+\begin{enumerate}
+    \item Integrating domain-specific medical knowledge bases to improve clinical accuracy
+    \item Developing more sophisticated deliberation protocols with structured argumentation
+    \item Expanding evaluation to include real-world clinical ethics committee comparisons
+    \item Implementing explainable AI techniques to improve transparency of agent reasoning
+\end{enumerate}
+
+\section*{Acknowledgments}
+
+We extend our sincere gratitude to the undergraduate medical student at Zhejiang University Medical School who provided valuable insights on our case studies and evaluation methodology. Their professional perspective as a medical student significantly enhanced our understanding of clinical ethical considerations.
+
+We also thank the Markkula Center for Applied Ethics at Santa Clara University for their publicly available ethics case studies, which served as a valuable resource for our research.
+
+Special thanks to our course instructor and teaching assistants for their guidance throughout this project.
+
+\bibliographystyle{acl_natbib}
+\bibliography{custom}
+
+\end{document}

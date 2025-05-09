@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: consultai_report.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: acl_natbib.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: custom.bib
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+You've used 7 entries,
+            3571 wiz_defined-function locations,
+            730 strings with 7272 characters,
+and the built_in function-call counts, 5600 in all, are:
+= -- 420
+> -- 395
+< -- 2
++ -- 129
+- -- 120
+* -- 399
+:= -- 892
+add.period$ -- 29
+call.type$ -- 7
+change.case$ -- 80
+chr.to.int$ -- 7
+cite$ -- 7
+duplicate$ -- 362
+empty$ -- 347
+format.name$ -- 137
+if$ -- 1161
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 82
+newline$ -- 40
+num.names$ -- 28
+pop$ -- 181
+preamble$ -- 1
+purify$ -- 68
+quote$ -- 0
+skip$ -- 216
+stack$ -- 0
+substring$ -- 137
+swap$ -- 172
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 63
+warning$ -- 0
+while$ -- 25
+width$ -- 0
+write$ -- 91

@@ -3,24 +3,25 @@
     "case_type": "autonomy",
     "roles": [
         "attending_physician",
-        "nurse_manager",
-        "ethicist",
-        "patient_advocate"
+        "patient_advocate",
+        "clinical_ethicist"
     ],
-    "max_rounds": 3,
-    "max_concurrent": 3,
-    "require_confirmation": true,
+    "max_rounds": 2,
+    "max_concurrent": 2,
+    "require_confirmation": false,
     "output_dir": "output/deliberations",
     "case_study_path": "data/case_studies/autonomy/case1.txt",
+    "generate_visualizations": true,
+    "evaluate_results": true,
     "model": {
-        "name": "gpt-4.1-2025-04-14",
+        "name": "gpt-4.1-nano",
         "temperature": 0.7,
-        "max_tokens": 4000
+        "max_tokens": 2000
     },
     "performance": {
         "track_token_usage": true,
         "track_response_times": true,
         "track_costs": true,
-        "cost_threshold": 1.0
+        "cost_threshold": 0.5
     }
 } 

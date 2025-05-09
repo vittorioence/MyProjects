@@ -1,0 +1,56 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Bang et~al.(2023)Bang, Kim, Shin, Ahn, Hwang, Jang, and
+  Seo}]{bang2023multiturn}
+Yejin Bang, Samuel~S Kim, Jamin Shin, Sungdong Ahn, Sung~Ju Hwang, Taeuk Jang,
+  and Minjoon Seo. 2023.
+\newblock A multiturn, multiagent debate framework to enhance reasoning in
+  large language models.
+\newblock \emph{arXiv preprint arXiv:2305.14325}.
+
+\bibitem[{Biller-Andorno et~al.(2021)Biller-Andorno, Ferrario, Joebges, Krones,
+  Massini, Barazzetti, Blum, Dubois-Ferre, and Kressmann}]{biller2021ethical}
+Nikola Biller-Andorno, Andrea Ferrario, Susanne Joebges, Tanja Krones, Federico
+  Massini, Gaia Barazzetti, Lester Blum, Vera Dubois-Ferre, and Melody
+  Kressmann. 2021.
+\newblock Ethical considerations for artificial intelligence in medicine: from
+  the clinician's lens.
+\newblock \emph{The Lancet Digital Health}, 3(9):e578--e580.
+
+\bibitem[{Chan et~al.(2023)Chan, Liang, Wei, Zhou, Gao, and
+  Liu}]{chan2023chateval}
+Hao Chan, Yao Liang, Jason Wei, Denny Zhou, Jianfeng Gao, and Zhilin Liu. 2023.
+\newblock Chateval: Towards better llm-based evaluators through multi-agent
+  debate.
+\newblock In \emph{Proceedings of the EMNLP}.
+
+\bibitem[{Jiang et~al.(2021)Jiang, Hwang, Bhagavatula, Bras, Forbes, Borchardt,
+  Liang, Etzioni, Sap, and Choi}]{jiang2021can}
+Liwei Jiang, Jena~D Hwang, Chandra Bhagavatula, Ronan~Le Bras, Maxwell Forbes,
+  Jon Borchardt, Jenny Liang, Oren Etzioni, Maarten Sap, and Yejin Choi. 2021.
+\newblock Can machines learn morality? the delphi experiment.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}.
+
+\bibitem[{{Markkula Center for Applied Ethics}(2023)}]{scu_ethics}
+{Markkula Center for Applied Ethics}. 2023.
+\newblock Cases in medical ethics: Student-led discussions.
+\newblock
+  \url{https://www.scu.edu/ethics/focus-areas/bioethics/resources/cases-in-medical-ethics-student-led-discussions/}.
+\newblock Accessed: 2023-12-10.
+
+\bibitem[{Mittelstadt(2019)}]{mittelstadt2019principles}
+Brent Mittelstadt. 2019.
+\newblock Principles alone cannot guarantee ethical ai.
+\newblock \emph{Nature Machine Intelligence}, 1(11):501--507.
+
+\bibitem[{Park et~al.(2023)Park, O'Brien, Cai, Morris, Liang, and
+  Bernstein}]{park2023generative}
+Joon~Sung Park, Joseph O'Brien, Carrie~Jun Cai, Meredith~Ringel Morris, Percy
+  Liang, and Michael~S Bernstein. 2023.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock \emph{Proceedings of the 36th Annual ACM Symposium on User Interface
+  Software and Technology}.
+
+\end{thebibliography}

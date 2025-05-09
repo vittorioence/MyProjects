@@ -1,0 +1,97 @@
+% ConsultAI System Architecture Diagram
+\documentclass[crop,tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,fit,backgrounds}
+\begin{document}
+
+\tikzset{
+    block/.style={
+        rectangle,
+        draw,
+        fill=blue!20,
+        text width=5.5em,
+        align=center,
+        rounded corners,
+        minimum height=3.5em,
+        font=\small
+    },
+    line/.style={
+        draw,
+        -Stealth,
+        shorten >=1pt,
+        shorten <=1pt
+    },
+    cloud/.style={
+        draw,
+        ellipse,
+        fill=red!20,
+        minimum height=2em
+    },
+    role/.style={
+        rectangle,
+        draw,
+        fill=green!20,
+        text width=6em,
+        align=center,
+        rounded corners,
+        minimum height=3em,
+        font=\small
+    },
+    layer/.style={
+        rectangle,
+        draw,
+        dashed,
+        inner sep=0.5cm,
+        rounded corners=4pt,
+        fill=gray!5,
+        font=\footnotesize
+    }
+}
+
+\begin{tikzpicture}[node distance=0.8cm and 1cm]
+    % Define the nodes
+    \node [block] (case) {Case Input};
+    \node [block, right=of case] (preprocessing) {Preprocessing};
+    
+    % Role definitions - Arranged compactly
+    \node [role, below=1.2cm of case, xshift=-2.5cm] (role1) {Attending Physician};
+    \node [role, right=0.3cm of role1] (role2) {Patient Advocate};
+    \node [role, right=0.3cm of role2] (role3) {Clinical Ethicist};
+    
+    \node [role, below=0.5cm of role1] (role4) {Hospital Admin};
+    \node [role, right=0.3cm of role4] (role5) {Nurse Manager};
+    \node [role, right=0.3cm of role5] (role6) {Social Worker};
+    
+    % Deliberation Layer Nodes
+    \node [block, below=1.2cm of role5, xshift=0cm] (delib) {Deliberation Orchestrator};
+    
+    % Consensus Layer Nodes
+    \node [block, below=0.8cm of delib] (consensus) {Consensus Engine};
+    
+    % Output & Evaluation Layer Nodes
+    \node [block, below=0.8cm of consensus] (output) {Final Recommendation};
+    \node [block, right=1.2cm of output] (eval) {Evaluation Framework};
+    
+    % Background Layers (drawn first)
+    \begin{pgfonlayer}{background}
+        \node[layer, fit=(case) (preprocessing), label={[anchor=south, yshift=0.2cm]above:Case Processing Layer}] (cplayer) {};
+        \node[layer, fit=(role1) (role2) (role3) (role4) (role5) (role6), label=left:Role Definition Layer] (rdlayer) {};
+        \node[layer, fit=(delib), label=left:Deliberation Layer] (dplayer) {};
+        \node[layer, fit=(consensus), label=left:Consensus Layer] (clayer) {};
+        \node[layer, fit=(output) (eval), label={[yshift=-0.1cm]below:Evaluation Layer}] (elayer) {};
+    \end{pgfonlayer}
+    
+    % Diagram Title - Positioned further above the cplayer to avoid overlap
+    \node [font=\bfseries\Large, above=0.8cm of cplayer] {ConsultAI System Architecture};
+    
+    % Connect the nodes (Layers and main blocks)
+    \path [line] (case) -- (preprocessing);
+    \path [line] (preprocessing.south) -- (rdlayer.north);
+    \path [line] (rdlayer.south) -- (delib.north);
+    \path [line] (delib) -- (consensus);
+    \path [line] (consensus) -- (output);
+    \path [line] (output.east) -| (eval.west);
+    \path [line, dashed] (eval.north) to[bend left=25] (delib.east);
+\end{tikzpicture}
+
+\end{document} 

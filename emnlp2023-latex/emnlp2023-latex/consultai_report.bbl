@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{12}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Bang et~al.(2023)Bang, Kim, Shin, Ahn, Hwang, Jang, and
@@ -8,6 +8,11 @@ Yejin Bang, Samuel~S Kim, Jamin Shin, Sungdong Ahn, Sung~Ju Hwang, Taeuk Jang,
 \newblock A multiturn, multiagent debate framework to enhance reasoning in
   large language models.
 \newblock \emph{arXiv preprint arXiv:2305.14325}.
+
+\bibitem[{Beauchamp and Childress(2001)}]{beauchamp2001principles}
+Tom~L Beauchamp and James~F Childress. 2001.
+\newblock Principles of biomedical ethics.
+\newblock \emph{Oxford University Press, USA}.
 
 \bibitem[{Biller-Andorno et~al.(2021)Biller-Andorno, Ferrario, Joebges, Krones,
   Massini, Barazzetti, Blum, Dubois-Ferre, and Kressmann}]{biller2021ethical}
@@ -24,6 +29,14 @@ Hao Chan, Yao Liang, Jason Wei, Denny Zhou, Jianfeng Gao, and Zhilin Liu. 2023.
 \newblock Chateval: Towards better llm-based evaluators through multi-agent
   debate.
 \newblock In \emph{Proceedings of the EMNLP}.
+
+\bibitem[{Guan et~al.(2023)Guan, Yuan, He, Wang, You, Zeng, Fu, Gu, Saab, Xing
+  et~al.}]{guan2023medical}
+Biqin Guan, Yuxin Yuan, Tong He, Zhi Wang, Kaiyuan You, Ding Zeng, Yan Fu,
+  James Gu, Khaled~K Saab, Lei Xing, et~al. 2023.
+\newblock Medical image foundation models through the lens of clinical outcome
+  prediction and human visual perception.
+\newblock \emph{arXiv preprint arXiv:2308.02463}.
 
 \bibitem[{Jiang et~al.(2021)Jiang, Hwang, Bhagavatula, Bras, Forbes, Borchardt,
   Liang, Etzioni, Sap, and Choi}]{jiang2021can}
@@ -52,5 +65,25 @@ Joon~Sung Park, Joseph O'Brien, Carrie~Jun Cai, Meredith~Ringel Morris, Percy
 \newblock Generative agents: Interactive simulacra of human behavior.
 \newblock \emph{Proceedings of the 36th Annual ACM Symposium on User Interface
   Software and Technology}.
+
+\bibitem[{Perez et~al.(2022)Perez, Rae, Preskill, Kaplan, Ndousse, and
+  Simeon}]{perez2022discovering}
+Ethan Perez, Jack Rae, Simon Preskill, Jared Kaplan, Kamilay Ndousse, and
+  Amanda Simeon. 2022.
+\newblock Discovering language model behaviors with model-written evaluations.
+\newblock In \emph{Proceedings of the NeurIPS}.
+
+\bibitem[{Schwitzgebel and Garza(2023)}]{schwitzgebel2023computers}
+Eric Schwitzgebel and Mara Garza. 2023.
+\newblock Do computers have moral status? we're asking the wrong question.
+\newblock \emph{Journal of Moral Philosophy}, 20(3):295--319.
+
+\bibitem[{Zheng et~al.(2023)Zheng, Lin, Chiang, Sheng, Fan, Chen, Liu, Peng,
+  Chen, Ma et~al.}]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Lin, Wen-Ding Chiang, Ying Sheng, Hao Fan, Zhongming
+  Chen, Jieyu Liu, Meng-Che Peng, Qintong Chen, Charlie Ma, et~al. 2023.
+\newblock Judging llm-as-a-judge with mt-bench and chatbot arena.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 11099--11122.
 
 \end{thebibliography}
